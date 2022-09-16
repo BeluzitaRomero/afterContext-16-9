@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ListaTareas } from "./components/ListaTareas";
+import { SubirTareas } from "./components/SubirTareas";
+import { Nav } from "./components/Nav";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TareasContextProvider } from "./context/TareasContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TareasContextProvider>
+      <BrowserRouter>
+        <Nav />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<SubirTareas />} />
+            <Route path="/lista" element={<ListaTareas />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </TareasContextProvider>
   );
 }
 

@@ -26,11 +26,11 @@ export const TareasContextProvider = ({ children }) => {
 
   //* Otra forma, es como mostro el profe Adrian
 
-  //    const agregarTarea2 = (tarea) => {
-  //     const id = uuid();
-  //     const nuevaTarea = { ...tarea, id };
-  //     setTareas((prev) => prev.concat(nuevaTarea));
-  //   };
+  //  const agregarTarea2 = (tarea) => {
+  //   const id = uuid();
+  //   const nuevaTarea = { ...tarea, id };
+  //   setTareas((prev) => prev.concat(nuevaTarea));
+  // };
 
   const removerTarea = (tarea) => {
     const removerTarea = tareas.filter((buscada) => buscada.id !== tarea.id);
@@ -50,9 +50,7 @@ export const TareasContextProvider = ({ children }) => {
   };
 
   const actualizarEstado = (tarea, estado) => {
-    const copiaTareas = [...tareas];
-
-    const actualizarTarea = copiaTareas.map((actual) => {
+    const actualizarTarea = tareas.map((actual) => {
       if (actual.id === tarea.id) {
         return { ...actual, estado: estado ? false : true };
       } else {
@@ -60,6 +58,11 @@ export const TareasContextProvider = ({ children }) => {
       }
     });
 
+    // const copiaTareas = [...tareas]
+    // const index = copiaTareas.findIndex(x => x.id === tarea.id)
+    // const actualizar = {...copiaTareas[index], estado: !tarea.estado};
+    // copiaTareas[index] = actualizar;
+    // setTareas(copiaTareas)
     //!---------------------------------------------------------
     //! Esto no es necesario en la funcion, sino que lo use
     //! para mostrar como el estado original no habia cambiado
